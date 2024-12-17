@@ -4,7 +4,7 @@ from .sunnylink import SunnylinkApi
 
 class Api:
   def __init__(self, dongle_id, use_sunnylink=False):
-    if use_sunnylink:
+    if use_sunnylink
       self.service = SunnylinkApi(dongle_id)
     else:
       self.service = CommaConnectApi(dongle_id)

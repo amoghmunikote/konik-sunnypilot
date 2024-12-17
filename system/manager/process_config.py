@@ -120,14 +120,14 @@ procs = [
   PythonProcess("webjoystick", "tools.bodyteleop.web", notcar),
 
   # sunnylink <3
-  DaemonProcess("manage_sunnylinkd", "system.athena.manage_sunnylinkd", "SunnylinkdPid"),
-  PythonProcess("sunnylink_registration", "system.manager.sunnylink", sunnylink_need_register_shim),
+  #DaemonProcess("manage_sunnylinkd", "system.athena.manage_sunnylinkd", "SunnylinkdPid"),
+  #PythonProcess("sunnylink_registration", "system.manager.sunnylink", sunnylink_need_register_shim),
 ]
 
 if os.path.exists("./gitlab_runner.sh"):
   procs += [NativeProcess("gitlab_runner_start", "system/manager", ["./gitlab_runner.sh", "start"], use_gitlab_runner, sigkill=False)]
 
-if os.path.exists("../loggerd/sunnylink_uploader.py"):
-  procs += [PythonProcess("sunnylink_uploader", "system.loggerd.sunnylink_uploader", use_sunnylink_uploader_shim)]
+#if os.path.exists("../loggerd/sunnylink_uploader.py"):
+#  procs += [PythonProcess("sunnylink_uploader", "system.loggerd.sunnylink_uploader", use_sunnylink_uploader_shim)]
 
 managed_processes = {p.name: p for p in procs}
